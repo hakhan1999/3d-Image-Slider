@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 0.8333333333vw;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+@media (max-width:991px) {
+    html {
+        font-size: 1.3333334vw;
+    }
+}
+
+@media (max-width:600px) {
+    html {
+        font-size: 4.102564103vw;
+    }
+}
+
+body {
+    background-color: #D2D2D2;
+    background-image:
+        repeating-linear-gradient(to right, transparent 0 6.25rem,
+            #25283b22 6.25rem 6.313rem),
+        repeating-linear-gradient(to bottom, transparent 0 6.25rem,
+            #25283b22 6.25rem 6.313rem);
+}
+
+body::before {
+    position: absolute;
+    width: min(87.5rem, 90vw);
+    top: 10%;
+    left: 50%;
+    height: 90%;
+    transform: translateX(-50%);
+    content: '';
+    background-image: url(images/bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    pointer-events: none;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider {
+    position: absolute;
+    width: 12.5rem;
+    height: 15.625rem;
+    top: 10%;
+    left: calc(50% - 6.25rem);
+    transform-style: preserve-3d;
+    transform: perspective(62.5rem);
+    animation: autoRun 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(62.5rem) rotateX(-16deg) rotateY(0deg);
+    }
+
+    to {
+        transform: perspective(62.5rem) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(34.375rem);
+}
+
+.banner .slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner .content {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(87.5rem, 100vw);
+    height: max-content;
+    padding-bottom: 6.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+}
+
+.banner .content h1 {
+    font-family: "Poppins";
+    font-size: 8rem;
+    color: #25283b;
+    position: relative;
+}
+
+.banner .content h1::after{
+    position: absolute;
+    inset: 0 0 0;
+    content: attr(data-content);
+    z-index: 2;
+    -webkit-text-stroke: 0.125rem #5e5e5e;
+    color: transparent;
+}
+
+.banner .content .author{
+    font-family: 'Poppins';
+    text-align: right;
+    max-width: 20rem;
+}
+
+.banner .content h2{
+    font-size: 2rem;
+}
+
+.banner .content .model{
+    background-image: url(images/model.png);
+    width: 100%;
+    height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-size: auto 130%;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
